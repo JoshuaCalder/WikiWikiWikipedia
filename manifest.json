@@ -4,17 +4,17 @@
   "name": "WikiWikiWikipedia",
   "description": "This extension searches for band videos based on Wikipedia band searches.",
   "version": "1.0",
-  /*"background": {
+  "background": {
     "scripts": ["background.js"]
   },
   "content_scripts": [
     {
       "matches": [
-        "https://en.wikipedia.org/wiki/Main_Page"
+        "https://en.wikipedia.org/*"
       ],
       "js": ["jquery-3.3.1.min.js", "content.js"]
     }
-  ],*/
+  ],
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
