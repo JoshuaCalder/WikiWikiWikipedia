@@ -12,7 +12,10 @@
       "matches": [
         "https://en.wikipedia.org/*"
       ],
-      "js": ["jquery-3.3.1.min.js", "content.js"]
+      "js": [
+          "jquery-3.3.1.min.js", "content.js", "search.js",
+          "auth.js"
+      ]
     }
   ],
   "browser_action": {
