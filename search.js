@@ -1,20 +1,28 @@
-const API_KEY = 'AIzaSyDEer5P3w6TnfT2BCgYykKYBg9mV5_njdE';
 
 // After the API loads, call a function to enable the search box.
 function handleAPILoaded() {
-  $('#search-button').attr('disabled', false);
+    $('#search-button').attr('disabled', false);
 }
 
-// Search for a specified string.
 function search() {
-  var q = $('#query').val();
-  var request = gapi.client.youtube.search.list({
-    q: q,
-    part: 'snippet'
-  });
+
+    console.log('Search Started');
+	// var q = $('#query').val();
+    var q = 'cats';
+    alert(q);
+	console.log('Search Request');
+
+    request = gapi.client.youtube.search.list({
+		q: 'q',
+        part: 'id, snippet',
+        type: 'video',
+        order: 'date'
+     });
+
 
   request.execute(function(response) {
     var str = JSON.stringify(response.result);
     $('#search-container').html('<pre>' + str + '</pre>');
+    alert(str);
   });
 }
