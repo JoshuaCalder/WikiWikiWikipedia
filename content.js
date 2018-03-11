@@ -38,10 +38,7 @@ $('.mw-wiki-logo').animateRotate(720, 2000);
 // grabs the title of the Wikipedia article and trims out the '- Wikipedia part'
 title = document.title
 title = title.substring(0, title.length-12);
-<<<<<<< HEAD
 
-
-=======
 chrome.runtime.sendMessage({title: title}, function(response) {
   // console.log(response.title);
 });
@@ -105,4 +102,3 @@ chrome.runtime.onMessage.addListener(
     youtubeIframe.insertBefore("#footer");
   }
 );
->>>>>>> wikiwiki-averypedia
