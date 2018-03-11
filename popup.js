@@ -109,15 +109,22 @@ document.addEventListener('DOMContentLoaded', function() {
   playButton = document.getElementById('btn-play');
   muteButton = document.getElementById('btn-mute');
   playButton.addEventListener('click', changePlayButton);
-  muteButton.addEventListener('click', changeMuteButton);
+  muteButton.addEventListener('click', changeMuteButton); 
 });
 
 function changePlayButton() {
+  isPlayed = false;
+  // to do, make is Played boolean
   if (document.getElementById('btn-play').innerHTML == "<i class=\"far fa-pause-circle\"></i>") {
     document.getElementById('btn-play').innerHTML = "<i class=\"far fa-play-circle\">";
+    isPlayed = true;
+
   } else {
     document.getElementById('btn-play').innerHTML = "<i class=\"far fa-pause-circle\"></i>";
   }
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {playClickedTitle: isPlayed, highway: "playclicked"}, function(response){});
+  });  
 }
 
 function changeMuteButton() {

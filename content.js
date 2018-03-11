@@ -48,10 +48,10 @@ chrome.runtime.sendMessage({title: title, highway: "wikititle"}, function(respon
 //HERE IS THE JS FOR THE VIDEO
 
 var tag = document.createElement('script');
-  tag.id = 'iframe-demo';
-  tag.src = 'https://www.youtube.com/iframe_api';
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+tag.id = 'iframe-demo';
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
@@ -65,6 +65,7 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
   document.getElementById('existing-iframe-example').style.borderColor = '#FF6D00';
 }
+
 function changeBorderColor(playerStatus) {
   var color;
   if (playerStatus == -1) {
@@ -84,6 +85,7 @@ function changeBorderColor(playerStatus) {
     document.getElementById('existing-iframe-example').style.borderColor = color;
   }
 }
+
 function onPlayerStateChange(event) {
   changeBorderColor(event.data);
 }
@@ -99,6 +101,13 @@ chrome.runtime.onMessage.addListener(
         vidIDs['cur'] = 0;
         id = vidIDs['ids'][0];
         setIframe(id);
+    }
+    if(request.highway == 'playclicked') {
+      if (request.playClickedTitle) {
+        $('#existing-iframe-example')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+      } else {
+        $('#existing-iframe-example')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+      }
     }
   }
 );
