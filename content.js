@@ -98,7 +98,8 @@ chrome.runtime.onMessage.addListener(
             frameborder="0" \
             style="border: solid 4px #37474F" \
     ></iframe>/');
-    //$("#existing-iframe-example").src = baseURL + path + id + queryParams;
     youtubeIframe.insertBefore("#footer");
+    $('#existing-iframe-example').hide();
+
   }
 );
