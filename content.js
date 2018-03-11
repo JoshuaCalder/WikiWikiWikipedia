@@ -41,7 +41,7 @@ title = document.title
 title = title.substring(0, title.length-12);
 
 chrome.runtime.sendMessage({title: title, highway: "wikititle"}, function(response) {
-  // console.log(response.title);
+  console.log(response);
 });
 
 //HERE IS THE JS FOR THE VIDEO
@@ -89,14 +89,11 @@ function onPlayerStateChange(event) {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if(request.highway == 'sendVidID') {
-        id = request.id;
-        setIframe(id);
-    }
-    if(request.highway == 'sendVidIDs') {
+      alert('INHERE')
+    if(request.highway == 'sendVidData') {
         vidIDs['ids'] = request.ids;
         vidIDs['cur'] = 0;
-        id = vidIDs['ids'][0];
+        id = vidIDs['ids'][0]['id'];
         setIframe(id);
     }
   }
@@ -126,7 +123,7 @@ function getNextVideoIdIndex() {
 
 function changeVideo() {
     nextIndex = getNextVideoIdIndex();
-    nextVidID = vidIDs['ids'][nextIndex]
+    nextVidID = vidIDs['ids'][nextIndex]['id']
     setIframe(nextVidID);
     vidIDs['cur'] = nextIndex;
     // alert(nextIndex);

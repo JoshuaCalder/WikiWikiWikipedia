@@ -9,7 +9,7 @@ function search(WikiTitle) {
     console.log('Search Started');
     var title = WikiTitle;
 	console.log('Search Request');
-
+    alert(title)
     request = gapi.client.youtube.search.list({
 		q: title,
         part: 'id, snippet',
@@ -19,10 +19,14 @@ function search(WikiTitle) {
 
 
   request.execute(function(response) {
-    // alert(JSON.stringify(response))
+    alert(JSON.stringify(response))
     vidIDS = parseYoutubeSearchResults(response);
-    sendVidIDs(vidIDS);
+    sendVidData(vidIDS);
   });
+}
+
+function getVidTitle(response) {
+    return response[]
 }
 
 function parseYoutubeSearchResults(res) {
@@ -31,26 +35,17 @@ function parseYoutubeSearchResults(res) {
     results = res['items'];
     for (var i = 0; i < results.length || i < 5 ; i++) {
         id = results[i]['id']['videoId'];
-        vidIDs[i] = id;
+        title = results[i]['snippet']['title'];
+        vidIDs[i] = {id: id, title: title};
     }
-    // alert( JSON.stringify(vidIDs) );
+    alert( JSON.stringify(vidIDs) );
     return vidIDs;
 }
 
-function sendVidID(id) {
+function sendVidData(ids) {
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {id: id, highway: 'sendVidID'}, function(response) {
-
-        });
-    });
-
-}
-
-function sendVidIDs(ids) {
-
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {ids: ids, highway: 'sendVidIDs'}, function(response) {
+        chrome.tabs.sendMessage(tabs[0].id, {ids: ids, highway: 'sendVidData'}, function(response) {
             // alert(ids[0])
         });
     });
