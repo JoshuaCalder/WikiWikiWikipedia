@@ -16,7 +16,7 @@ googleApiClientReady = function() {
     gapi.client.load('youtube', 'v3', function() {
         isLoad = true;
     });
-    document.getElementById("search-button").addEventListener("click", search);
+    // document.getElementById("search-button").addEventListener("click", search);
 }
 
 // Attempt the immediate OAuth 2.0 client flow as soon as the page loads.
