@@ -8,7 +8,6 @@ function search(WikiTitle) {
 
     console.log('Search Started');
     var title = WikiTitle;
-    alert('title: ' + title);
 	console.log('Search Request');
 
     request = gapi.client.youtube.search.list({
@@ -20,17 +19,11 @@ function search(WikiTitle) {
 
 
   request.execute(function(response) {
-    // vid1ID = parseYoutubeSearchResults(response);
-    // sendVidID(vid1ID);
+    // alert(JSON.stringify(response))
     vidIDS = parseYoutubeSearchResults(response);
     sendVidIDs(vidIDS);
   });
 }
-
-// function parseYoutubeSearchResults(res) {
-//     vid1ID = res['items'][0]['id']['videoId'];
-//     return vid1ID;
-// }
 
 function parseYoutubeSearchResults(res) {
     vidIDs = [];
@@ -40,7 +33,7 @@ function parseYoutubeSearchResults(res) {
         id = results[i]['id']['videoId'];
         vidIDs[i] = id;
     }
-    alert(vidIDs[0])
+    // alert( JSON.stringify(vidIDs) );
     return vidIDs;
 }
 

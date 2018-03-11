@@ -1,5 +1,5 @@
 //content.js
-vidIDs = [];
+vidIDs = {cur: 0, ids: []};
 // changing the logo to a turntable
 turntable = "\"" + chrome.extension.getURL("icon.png") + "\"";
 $(".mw-wiki-logo").css("background-image", "url(" +turntable + ")");
@@ -30,6 +30,7 @@ $.fn.animateRotate = function(angle, duration, easing, complete) {
 $('.mw-wiki-logo').click(function(e) {
     e.preventDefault();
     $('.mw-wiki-logo').animateRotate(720, 2000);
+    changeVideo();
 });
 
 // rotates the turntable 2160 degrees for a duration of 10000 milliseconds
@@ -93,14 +94,16 @@ chrome.runtime.onMessage.addListener(
         setIframe(id);
     }
     if(request.highway == 'sendVidIDs') {
-        vidIDs = request.ids;
-        id = vidIDs[0];
+        vidIDs['ids'] = request.ids;
+        vidIDs['cur'] = 0;
+        id = vidIDs['ids'][0];
         setIframe(id);
     }
   }
 );
 
 function setIframe(id) {
+    $('#existing-iframe-example').remove();
     baseURL = "https://www.youtube.com";
     path = "/embed/";
     queryParams = "?enablejsapi=1&autoplay=1";
@@ -112,4 +115,18 @@ function setIframe(id) {
     ></iframe>/');
     youtubeIframe.insertBefore("#footer");
     $('#existing-iframe-example').hide();
+}
+
+function getNextVideoIdIndex() {
+    nextIndex = vidIDs['cur'] + 1;
+    nextIndex = vidIDs['cur'] + 1 < vidIDs['ids'].length ? nextIndex : 0;
+    return nextIndex;
+}
+
+function changeVideo() {
+    nextIndex = getNextVideoIdIndex();
+    nextVidID = vidIDs['ids'][nextIndex]
+    setIframe(nextVidID);
+    vidIDs['cur'] = nextIndex;
+    // alert(nextIndex);
 }
