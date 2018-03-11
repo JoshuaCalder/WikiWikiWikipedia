@@ -7,6 +7,8 @@
 <html>
   <head>
     <title>WikiWikiWikipedia</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome-all.min.css">
     <style type="text/css">
       body {
         margin: 10px;
@@ -31,12 +33,23 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
   <script src="popup.js"></script>
+ <!--  <script src="fontawesome-all.min.js"></script> -->
   </head>
 
   <body>
-    <button id="btn-play">Play</button>
-    <button id="btn-mute">Mute</button>
-    <input id="vol-control" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+    <div id="popup-header">
+      <img id="popup-logo" src="icon.png"><p id="header-text">WikiWikiWikipedia</p>
+    </div>
+    <hr>
+    <div class="play">
+      <button class="btn" id="btn-play"><i class="far fa-play-circle"></i></button>
+    </div>
+    <div class="vol-slider">
+      <button class="btn" id="btn-mute"><i class="fas fa-volume-down"></i></button>
+      <input id="vol-control" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+      <button class="btn" id="btn-mute"><i class="fas fa-volume-up"></i></button>
+    </div>
+    
   </body>
 
 </html>

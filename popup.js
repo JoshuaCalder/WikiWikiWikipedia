@@ -113,18 +113,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changePlayButton() {
-  if (document.getElementById('btn-play').innerHTML == "Pause") {
-    document.getElementById('btn-play').innerHTML = "Play";
+  if (document.getElementById('btn-play').innerHTML == "<i class=\"far fa-pause-circle\"></i>") {
+    document.getElementById('btn-play').innerHTML = "<i class=\"far fa-play-circle\">";
   } else {
-    document.getElementById('btn-play').innerHTML = "Pause";
+    document.getElementById('btn-play').innerHTML = "<i class=\"far fa-pause-circle\"></i>";
   }
 }
 
 function changeMuteButton() {
-  if (document.getElementById('btn-mute').innerHTML == "Mute") {
-    document.getElementById('btn-mute').innerHTML = "Unmute";
+  if (document.getElementById('btn-mute').innerHTML == "<i class=\"fas fa-volume-up\"></i>") {
+    document.getElementById('btn-mute').innerHTML = "<i class=\"fas fa-volume-off\"></i>";
   } else {
-    document.getElementById('btn-mute').innerHTML = "Mute";
+    document.getElementById('btn-mute').innerHTML = "<i class=\"fas fa-volume-up\"></i>";
   }
 }
 
