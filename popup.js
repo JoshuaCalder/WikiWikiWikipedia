@@ -107,14 +107,24 @@ function saveBackgroundColor(url, color) {
 
 document.addEventListener('DOMContentLoaded', function() {
   playButton = document.getElementById('btn-play');
-  playButton.addEventListener('click', changeButton);
+  muteButton = document.getElementById('btn-mute');
+  playButton.addEventListener('click', changePlayButton);
+  muteButton.addEventListener('click', changeMuteButton);
 });
 
-function changeButton() {
+function changePlayButton() {
   if (document.getElementById('btn-play').innerHTML == "Pause") {
     document.getElementById('btn-play').innerHTML = "Play";
   } else {
     document.getElementById('btn-play').innerHTML = "Pause";
+  }
+}
+
+function changeMuteButton() {
+  if (document.getElementById('btn-mute').innerHTML == "Mute") {
+    document.getElementById('btn-mute').innerHTML = "Unmute";
+  } else {
+    document.getElementById('btn-mute').innerHTML = "Mute";
   }
 }
 
