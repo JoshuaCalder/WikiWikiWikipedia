@@ -1,5 +1,12 @@
 //background.js
 chrome.browserAction.onClicked.addListener(function(tab) {
      alert("Loading api...");
-     search();
  });
+
+ chrome.runtime.onMessage.addListener(gotTitle);
+
+function gotTitle(title, sender, sendResponse) {
+    WikiTitle = title.title;
+    // alert('Title received: ' + title.title);
+    search(WikiTitle);
+}

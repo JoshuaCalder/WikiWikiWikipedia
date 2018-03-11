@@ -4,25 +4,39 @@ function handleAPILoaded() {
     $('#search-button').attr('disabled', false);
 }
 
-function search() {
+function search(WikiTitle) {
 
     console.log('Search Started');
-	// var q = $('#query').val();
-    var q = 'cats';
-    alert(q);
+    var title = WikiTitle;
+    // alert('title: ' + title);
 	console.log('Search Request');
 
     request = gapi.client.youtube.search.list({
-		q: 'q',
+		q: title,
         part: 'id, snippet',
         type: 'video',
-        order: 'date'
+        order: 'relevance'
      });
 
 
   request.execute(function(response) {
+    vid1ID = parseYoutubeSearchResults(response);
+    sendVidID(vid1ID);
     var str = JSON.stringify(response.result);
-    $('#search-container').html('<pre>' + str + '</pre>');
-    alert(str);
   });
+}
+
+function parseYoutubeSearchResults(res) {
+    vid1ID = res['items'][0]['id']['videoId'];
+    return vid1ID;
+}
+
+function sendVidID(id) {
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {id: id}, function(response) {
+
+        });
+    });
+
 }
