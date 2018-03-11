@@ -120,6 +120,7 @@ function setIframe(id) {
 function getNextVideoIdIndex() {
     nextIndex = vidIDs['cur'] + 1;
     nextIndex = vidIDs['cur'] + 1 < vidIDs['ids'].length ? nextIndex : 0;
+    // alert("Switching to index: " + nextIndex + " of " + vidIDs['ids'].length);
     return nextIndex;
 }
 
