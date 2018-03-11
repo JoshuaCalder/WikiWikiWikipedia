@@ -111,7 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changeButton() {
-  document.getElementById('btn-play').innerHTML = "Pause";
+  if (document.getElementById('btn-play').innerHTML == "Pause") {
+    document.getElementById('btn-play').innerHTML = "Play";
+  } else {
+    document.getElementById('btn-play').innerHTML = "Pause";
+  }
 }
 
 
