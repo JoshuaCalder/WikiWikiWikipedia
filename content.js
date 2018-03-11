@@ -5,8 +5,9 @@ turntable = "\"" + chrome.extension.getURL("icon.png") + "\"";
 $(".mw-wiki-logo").css("background-image", "url(" +turntable + ")");
 $('.mw-wiki-logo').height(115);
 $('.mw-wiki-logo').css('background-size', '90px 90px');
-$("<div style='padding: 15px 0px 0px 0px;text-align:center;font-size:22px;font-family: \"Crimson Text\"'>Wiki Wiki</div>").insertBefore(".mw-wiki-logo");
-$("<div style='padding: 0px 0px 0px 0px;text-align:center;font-size:32px;font-family: \"Crimson Text\"'>Wikipedia</div>").insertBefore(".mw-wiki-logo");
+$('.mw-wiki-logo').removeAttr('title');
+$("<div style='padding: 15px 0px 0px 0px;text-align:center;font-size:22px;font-family: \"Crimson Text\"'><a style='display:block;width:160px;height:25px' href='https://www.wikipedia.org/'>Wiki Wiki</a></div>").insertBefore(".mw-wiki-logo");
+$("<div style='padding: 0px 0px 0px 0px;text-align:center;font-size:32px;font-family: \"Crimson Text\"'><a style='display:block;width:160px;height:30px' href='https://www.wikipedia.org/'>Wikipedia</a></div>").insertBefore(".mw-wiki-logo");
 
 // helper method that rotates the turntable icon
 $.fn.animateRotate = function(angle, duration, easing, complete) {
