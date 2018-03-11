@@ -39,10 +39,6 @@ $('.mw-wiki-logo').animateRotate(720, 2000);
 title = document.title
 title = title.substring(0, title.length-12);
 
-chrome.runtime.sendMessage({title: title}, function(response) {
-  // console.log(response.title);
-});
-
 //HERE IS THE JS FOR THE VIDEO
 
 var tag = document.createElement('script');

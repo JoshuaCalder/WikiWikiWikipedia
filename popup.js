@@ -109,10 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
   playButton = document.getElementById('btn-play');
   muteButton = document.getElementById('btn-mute');
   playButton.addEventListener('click', changePlayButton);
-  muteButton.addEventListener('click', changeMuteButton);
-  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    document.getElementById('btn-play').innerHTML = "<i class=\"far fa-pause-circle\"></i>";
-  });  
+  muteButton.addEventListener('click', changeMuteButton); 
 });
 
 function changePlayButton() {
