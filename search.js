@@ -34,7 +34,7 @@ function parseYoutubeSearchResults(res) {
 function sendVidID(id) {
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {id: id}, function(response) {
+        chrome.tabs.sendMessage(tabs[0].id, {id: id, highway: 'sendVidID'}, function(response) {
 
         });
     });

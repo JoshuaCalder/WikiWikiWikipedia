@@ -88,18 +88,19 @@ function onPlayerStateChange(event) {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    baseURL = "https://www.youtube.com";
-    path = "/embed/";
-    id = request.id;
-    queryParams = "?enablejsapi=1&autoplay=1";
-    youtubeIframe = $('<iframe id=\"existing-iframe-example\" \
-            width=\"640\" height="360" \
-            src=\"' + baseURL + path + id + queryParams + '\" \
-            frameborder="0" \
-            style="border: solid 4px #37474F" \
-    ></iframe>/');
-    youtubeIframe.insertBefore("#footer");
-    $('#existing-iframe-example').hide();
-
+    if(request.highway == 'sendVidID') {
+        baseURL = "https://www.youtube.com";
+        path = "/embed/";
+        id = request.id;
+        queryParams = "?enablejsapi=1&autoplay=1";
+        youtubeIframe = $('<iframe id=\"existing-iframe-example\" \
+                width=\"640\" height="360" \
+                src=\"' + baseURL + path + id + queryParams + '\" \
+                frameborder="0" \
+                style="border: solid 4px #37474F" \
+        ></iframe>/');
+        youtubeIframe.insertBefore("#footer");
+        $('#existing-iframe-example').hide();
+    }
   }
 );
