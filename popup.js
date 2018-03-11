@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changePlayButton() {
-  isPlayed = true;
+  isPlayed = false;
   // to do, make is Played boolean
   if (document.getElementById('btn-play').innerHTML == "<i class=\"far fa-pause-circle\"></i>") {
     document.getElementById('btn-play').innerHTML = "<i class=\"far fa-play-circle\">";
