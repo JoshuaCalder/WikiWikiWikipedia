@@ -1,0 +1,1 @@
+document.getElementById('btn-play').innerHTML = "Pause";
