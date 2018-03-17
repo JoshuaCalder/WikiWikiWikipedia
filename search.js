@@ -19,14 +19,10 @@ function search(WikiTitle) {
 
 
   request.execute(function(response) {
-    alert(JSON.stringify(response))
+    // alert(JSON.stringify(response))
     vidIDS = parseYoutubeSearchResults(response);
     sendVidData(vidIDS);
   });
-}
-
-function getVidTitle(response) {
-    return response[]
 }
 
 function parseYoutubeSearchResults(res) {
@@ -38,7 +34,7 @@ function parseYoutubeSearchResults(res) {
         title = results[i]['snippet']['title'];
         vidIDs[i] = {id: id, title: title};
     }
-    alert( JSON.stringify(vidIDs) );
+    // alert( JSON.stringify(vidIDs) );
     return vidIDs;
 }
 

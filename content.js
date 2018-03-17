@@ -128,3 +128,9 @@ function changeVideo() {
     vidIDs['cur'] = nextIndex;
     // alert(nextIndex);
 }
+
+function sendCurrentVidTitle(title) {
+    chrome.runtime.sendMessage({title: title, highway: "sendCurrentVidTitle"}, function(response) {
+      console.log(response);
+    });
+}
