@@ -46,7 +46,6 @@ chrome.runtime.sendMessage({title: title, highway: "wikititle"}, function(respon
 });
 
 //HERE IS THE JS FOR THE VIDEO
-
 var tag = document.createElement('script');
 tag.id = 'iframe-demo';
 tag.src = 'https://www.youtube.com/iframe_api';

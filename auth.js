@@ -32,7 +32,7 @@ function checkAuth() {
     }, handleAuthResult);
 }
 
-// Handle the result of a gapi.auth.authorize() call.
+// Handle the result of a gapi.auth.authorize() call. Funk
 function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         // Authorization was successful. Hide authorization prompts and show
