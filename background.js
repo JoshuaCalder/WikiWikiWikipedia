@@ -4,7 +4,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
  });
 
 chrome.runtime.onMessage.addListener(gotTitle);
-
+// Adding a comment so I can commit
 function gotTitle(title, sender, sendResponse) {
     if(title.highway == 'wikititle') {
         WikiTitle = title.title;
